@@ -15,65 +15,65 @@
     <li>
       <a href="#module-1---user-input">Module 1</a>
       <ul>
-        <li><a href="#about1">About Module 1 Code</a></li>
+        <li>About Module 1 Code</a></li>
         <li>Instructions for Module 1</a></li>
-        <li><a href="#details-about-testing1">Details about Testing Procedures for Module 1</a></li>
+        <li>Details about Testing Procedures for Module 1</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-2---lidar-camera">Module 2</a>
       <ul>
-        <li><a href="#about2">About Module 2 Code</a></li>
-        <li><a href="#instruction-for-user2">Instructions for Module 2</a></li>
-        <li><a href="#details-about-testing2">Details about Testing Procedures for Module 2</a></li>
+        <li>About Module 2 Code</a></li>
+        <li>Instructions for Module 2</a></li>
+        <li>Details about Testing Procedures for Module 2</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-3---pan-and-tilt">Module 3</a>
       <ul>
-        <li><a href="#about3">About Module 3 Code</a></li>
-        <li><a href="#instruction-for-user3">Instructions for Module 3</a></li>
-        <li><a href="#details-about-testing3">Details about Testing Procedures for Module 3</a></li>
+        <li>About Module 3 Code</a></li>
+        <li>Instructions for Module 3</a></li>
+        <li>Details about Testing Procedures for Module 3</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-4---box-detection">Module 4</a>
       <ul>
-        <li><a href="#about4">About Module 4 Code</a></li>
-        <li><a href="#instruction-for-user4">Instructions for Module 4</a></li>
-        <li><a href="#details-about-testing4">Details about Testing Procedures for Module 4</a></li>
+        <li>About Module 4 Code</a></li>
+        <li>Instructions for Module 4</a></li>
+        <li>Details about Testing Procedures for Module 4</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-5---7-seg-display">Module 5</a>
       <ul>
-        <li><a href="#about5">About Module 5 Code</a></li>
-        <li><a href="#instruction-for-user5">Instructions for Module 5</a></li>
-        <li><a href="#details-about-testing5">Details about Testing Procedures for Module 5</a></li>
+        <li>About Module 5 Code</a></li>
+        <li>Instructions for Module 5</a></li>
+        <li>Details about Testing Procedures for Module 5</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-6---sound">Module 6</a>
       <ul>
-        <li><a href="#about3">About Module 6 Code</a></li>
-        <li><a href="#instruction-for-user3">Instructions for Module 6</a></li>
-        <li><a href="#details-about-testing3">Details about Testing Procedures for Module 6</a></li>
+        <li>About Module 6 Code</a></li>
+        <li>Instructions for Module 6</a></li>
+        <li>Details about Testing Procedures for Module 6</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-7---led-lights">Module 7</a>
       <ul>
-        <li><a href="#about7">About Module 7 Code</a></li>
-        <li><a href="#instruction-for-user7">Instructions for Module 7</a></li>
-        <li><a href="#details-about-testing7">Details about Testing Procedures for Module 7</a></li>
+        <li>About Module 7 Code</a></li>
+        <li>Instructions for Module 7</a></li>
+        <li>Details about Testing Procedures for Module 7</a></li>
       </ul>
     </li>
     <li>
       <a href="#module-8---lcd-display">Module 8</a>
       <ul>
-        <li><a href="#about8">About Module 8 Code</a></li>
-        <li><a href="#instruction-for-user8">Instructions for Module 8</a></li>
-        <li><a href="#details-about-testing8">Details about Testing Procedures for Module 8</a></li>
+        <li>About Module 8 Code</a></li>
+        <li>Instructions for Module 8</a></li>
+        <li>Details about Testing Procedures for Module 8</a></li>
       </ul>
     </li>
     <li><a href="#references">References</a></li>
