@@ -16,7 +16,7 @@
       <a href="#module-1---user-input">Module 1</a>
       <ul>
         <li><a href="#about1">About Module 1 Code</a></li>
-        <li><a href="#instruction-for-user1">Instructions for Module 1</a></li>
+        <li>Instructions for Module 1</a></li>
         <li><a href="#details-about-testing1">Details about Testing Procedures for Module 1</a></li>
       </ul>
     </li>
