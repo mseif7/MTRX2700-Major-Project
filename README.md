@@ -199,18 +199,30 @@ The modules and member allocation are explained in the sections below.
 
 <!-- Module 7 info -->
 ## Module 7 - LED Lights
-
+Module 7 is responsible for the function of the LED's of the DragonBoard. This module will take in the remaining number of stock and depending on the amount remaining, the LED lights will act as a ‘progress bar’ and display the percentage of stock remaining as a ‘progress bar’.
 
 
 ### About Module 7 Code
+The required inputs for the module are the maximum number of boxes, and the remaining number of boxes. From these variables, another variable is calculated named ratio, which as the name suggests is a ratio of the remaining boxes with the total. The program then goes through a series of if statements to determine which range the value ratio lies between. The if statements are set up in order to 'round' ratio to the nearest eigth, to provide the most accurate progress bar.
+Once the range is found, another variable led_num is given a specific value. This value will later determine the number of LEDs which are illuminated. 
+
+The values of PORTB and PORTJ are then set. DDRB = 0xFF and DDRJ = 0xFF sets both PORTB and PORTJ as outputs. PTJ = 0x00 then enables LEDs. After this we can then set the value of PORTB to the number we assigned earlier to led_num. The LEDs on the dragonboard should then be illuminated with the corresponding amount of LEDs turned on. For example, if there are 80 total boxes and 10 boxes are remaining, one LED should be illuminated to symbolise one eigth (12.5%) of the stock remaining.
+
 
 
 ### Instructions for Module 7
+For testing module individually:
+1. Manually declare the maximum amount of boxes and remaining number of boxes. This can be done at the top of main (eg for maximum boxes to be 80, write int max_boxes = 80;).
+2. Connect the device to the dragonboard
+3. 2. Run the debugger in the IDE
+4. Run the code using the right pointing green Start/Continue arrow.
+5. The corresponding number of LEDs should light up depending on the number of max boxes and remaining boxes you inputed. 
 
- 
+
+
 
 ### Details about Testing Procedures for Module 7
-
+Testing the LEDs are functioning correctly can be done easily. The user needs to change the values of max boxes and remaining boxes and observe if the correct amount of LEDs are illuminating. For example, make max_boxes = 80 and rem_boxes = 40. It can be seen that 50% of the boxes are remaining. Therefore we should obviously expected half (4/8) LEDs to be illuminated. If this is the case, the module is working correctly.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
