@@ -157,10 +157,6 @@ Depending on the rate of data acquisition, it is commended that the the sensor s
 The ratio converting raw data to centimeter is obtained from field testing of the device used in this project and adapted to the method of ruling out noises. If a different device used, please refer to the manual of the new device or conduct another field test to obtain the new value. If a new method of noise removal is used, please recalculate this value. 
 #### Vertical Distance Conversion
 The “angle_convert” function may be modified depends on the actual position and angle of the device connected to the frame, and the configuration of the servo motors.
-
-
-### Instructions for Module 2
-
    
 ### Details about Testing Procedures for Module 2
 
