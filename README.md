@@ -86,26 +86,38 @@
 ## Group Details
 
 For this assignment, we had 3 group members in person and 3 group members on discord with one major project to complete. This project involved observing how the future of supermarkets could be impacted by new technologies. The specific hardware in question are the Dragon12 board and the Pan/Tilt unit (PTU). The objective was to implement a proof-of-concept technology to improve the operation of a certain part within the supermarket. Our groups idea involved using these new technologies to scan the shelves and constantly keep track of the amount of the product remaining, and to relay this information to the staff of the supermarket. However this was a very large task and thus needed to be split into numerous smaller modules for each person to work on.
-The modules and member allocation are explained in the sections below.
+The modules and member allocation are explained in the sections below.; 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
+ 
 
 <!-- Module 1 info -->
 ## Module 1 - User Input
-
-
-
-
+Module 1 is for taking user inputs from serial port and store them as variables for later use. 
+The variables needed to be stored are: total rows; total coloumns; height of the shelf; width of the shelf; height of the the box; width of the box; and length of the box. 
+No output message needed for this module.
 
 ### About Module 1 Code
+The code includes 1 interrupt and 5 functions to perform: input taken from serial port, input spilt into 7 variables; input conversion from char arrary to int and stored in 1 struct (struct input, name as "inputs"). 
 
 
 
 ### Instructions for Module 1
+User input: <total rows> <total coloumns> <height of the shelf> <width of the shelf> <height of the the box> <width of the box> <and length of the box> <?>   
+With input '?' detected, the system will stop receiving, and start to transfer the inputs as ints.   
 
-### Details about Testing Procedures for Module 1
+### Details about Testing Procedures for Module 1  
+To test the module in CodeWarrior, the user can see the results from debugger.   
+Inputs: storing the int-type inputs as final outcome.  
+rawData: storing the arrary of char-type inputs indicating the inputs been successfully received from the serial port.  
+Buffer: storing the last 1 char of rawData, used to determine the end of typing.  
+
+Procedure:  
+1. Run the code on debugger  
+2. Enter the user input on terminal (SCI0)  
+3. Check the data stored (via the window of data)  
+4. If the values stroed in 'inputs' are all 0s, run the code again by clicking the green bottom  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
