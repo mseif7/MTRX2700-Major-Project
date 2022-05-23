@@ -104,7 +104,7 @@ The code includes 1 interrupt and 5 functions to perform: input taken from seria
 
 
 ### Instructions for Module 1
-User input: <total rows> <total coloumns> <height of the shelf> <width of the shelf> <height of the the box> <width of the box> <and length of the box> <?>   
+User input: \<total rows\> \<total coloumns\> \<height of the shelf\> \<width of the shelf\> \<height of the the box\> \<width of the box\> \<and length of the box\> \<?\>   
 With input '?' detected, the system will stop receiving, and start to transfer the inputs as ints.   
 
 ### Details about Testing Procedures for Module 1  
