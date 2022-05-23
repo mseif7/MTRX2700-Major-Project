@@ -129,34 +129,11 @@ It is assumed that the PTU has no motion when making measurement. Inaccurate res
 
 
 ### About Module 2 Code
-#### Data Obtaining
-The driver file “laser.c” initialize the LiDAR sensor and then continuously getting measurements. These values are discarded unless the PTU is confirmed to be at the desired position.<br>The detail operation refers to the PTU module. When The PTU reaches the target position, it starts taking the measured data from LiDAR sensor and write it to a global variable “LaserRD” (stands for “Laser Raw Data”), which is an array of integers. Then it calls the data processing functions to handle the raw data.
-The angles of the servo motors are also passed to the data processing part. 
-#### Data Processing
-The data processing part contains a major function “distance_convert” that calls the other functions to complete its task.
-##### distance_convert
-Input: two angle values in degree<br>
-(The global variable “LaserRD” will be taken automatically, no needed to be included in the input parameters.)<br>
-Output: a float number representing the vertical distance from the object to the sensor<br>
-It calls the function “laser_noise_removal”, “unit_to_cm”, “angle_convert” in a series to process the data.
-##### laser_noise_removal
 
-##### unit_to_cm
-Input: an integer value of the measured distance in the same scale to the raw data (from “laser_noise_removal”)<br>
-Output: a float number of the measured distance in centimeters<br>
-This function simply divide the input with 281.7, which is the ratio from raw data to centimeter.
-##### angle_convert
-Input: two float numbers of the servo motor angles, one float number from “unit_to_cm” <br>
-Output: a float number representing the vertical distance from the object to the sensor<br>
+
 
 ### Instructions for Module 2
-#### Getting Measurement
-This module is designed on the assumption that the PTU has no motion during data acquisition. Inaccurate results may occur otherwise.<br>
-Depending on the rate of data acquisition, it is commended that the the sensor stays in the same position for long enough time to allow enough measured values to fill the data recording buffer. In this project, the recommended time is 0.5s to fill a buffer of size 40. Even if the buffer is not fully filled, the function may still run, but the result could be less accurate.
-#### Distance Unit Conversion
-The ratio converting raw data to centimeter is obtained from field testing of the device used in this project and adapted to the method of ruling out noises. If a different device used, please refer to the manual of the new device or conduct another field test to obtain the new value. If a new method of noise removal is used, please recalculate this value. 
-#### Vertical Distance Conversion
-The “angle_convert” function may be modified depends on the actual position and angle of the device connected to the frame, and the configuration of the servo motors.
+
    
 ### Details about Testing Procedures for Module 2
 
@@ -221,10 +198,17 @@ Functions used in this module include:
 ### Instructions for Module 5
 For testing this module independently:
 
+User can access the main.c file and locate variables int SEG_FLAG and int qty;
+Set SEG_FLAG to 1 to allow the module to be executed;
+Set qty to any integer between 0 and 99 and run the program, and the value of qty should be displayed on the rightmost 2 digits of the 7-seg display area.
+
+Note: when running the program, the board may need to be reset to display the updated value. 
 
  
 
 ### Details about Testing Procedures for Module 5
+Testing of this module was done manually through channging the variables SEG_FLAG and qty;
+This module has been able to successfully display any integer value of variable qty, between 0 and 99 (as only 2 dispay digits are used).
 
 
 
@@ -315,6 +299,7 @@ Functions used in this module include:
 
 ### Instructions for Module 8
 For executing this module independently:
+
 User can access the main.c file and locate variables int LCD_FLAG, int qty and int full_qty;
 Set LCD_FLAG to 1 to allow the module to be executed;
 Set full_qty to any integer larger than 1;
@@ -328,7 +313,9 @@ Note: when running the program, the board may need to be reset to display the up
  
 
 ### Details about Testing Procedures for Module 8
-
+Testing of this module was done manually through channging the variables LCD_FLAG, full_qty and qty;
+Each possible case was tested and the module is able to display approriate messages for each case, including when qty = 0 (empty), qty = full_qty (full), qty > full_qty (error) and 0 < qty < full_qty (Refill x items).
+Some minor improvements were made throughout testing, such as modifying the writeIntLCD function so that the item quantity is displayed as integers and not decimals (e.g. board displays "Refill 9 items" instead of "Refill 9.0 items").
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
