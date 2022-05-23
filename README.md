@@ -100,8 +100,13 @@ No output message needed for this module.
 
 ### About Module 1 Code
 The code includes 1 interrupt and 5 functions to perform: input taken from serial port, input spilt into 7 variables; input conversion from char arrary to int and stored in 1 struct (struct input, name as "inputs"). 
-
-
+- interrupt VectorNumber_Vsci0 void ReadInterruptHandler(): Keep reading user inputs from serial port and terminate the reading process when "?" detected. Input spliting and storing also happens here.
+- void InitialiseSerialPort0(SerialPort \*serial_port, int successFlag): initialize the serial port 0 to be ready to read user inputs    
+- void readSerial(SerialPort \*serial_port) :store every single character of user inputs into an char arrary named rawData   
+- void ResetSerial(): reset the flags and counters for the system to run again  
+- int new_atoi(char \*ptr, int length): convert each char-type numbers to int type  
+- int compare(char Achar): Compare the the char-type number and returns its int version
+   
 
 ### Instructions for Module 1
 User input: \<total rows\> \<total coloumns\> \<height of the shelf\> \<width of the shelf\> \<height of the the box\> \<width of the box\> \<and length of the box\> \<?\>   
