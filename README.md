@@ -177,13 +177,27 @@ It is assumed that the PTU has no motion when making measurement. Inaccurate res
 
 <!-- Module 5 info -->
 ## Module 5 - 7 Seg Display
-
+This module takes the calculated quantity of items left on the shelf from the Box Detection module, and displays the quantity on the rightmost 2 digits of the 7-segment display. 
 
 
 ### About Module 5 Code
+Functions used in this module include: 
+- Init_7seg(void): 
+  - initialises the 7-segment display module by configuring PORTB and PORTP to be used as output;
+  - PORTP is used to select the digit that is used on the 7-seg display, and PORTB is used to output a hex value to the 7-seg, to display a number).
+- displayQty(int itemQty, int seg_flag):  
+  - Takes in the SEG_FLAG variable and checks its value  - if SEG_FLAG = 1, 7-seg display module will be executed;
+  - Takes in the calculated item quantity from the Box Detection module, use arithmetic operations to obtain numbers on each digit (for example, quantity 13 is     separated to digits 1 and 3); 
+  - Hex values corresponding to 7-seg illumination patterns of numbers 0-9 are stored in an array (segHex) in the LCD_Fin.h file, and are called according to       the numbers to be displayed (e.g. segHex[3] stores the hex value that displays number 3 on the 7-seg display, once output to PORTB);
+  - The hex value is sent to PORTB for display, and PORTP is used to select which digit the number will be displayed on (e.g. quantity 13 will have number 3         displayed on the rightmost digit, and number 1 displayed on the second rightmost digit). 
+- MSDelay(unsigned int itime): 
+  - delays the program by a certain amount of time (in milliseconds).
+
 
 
 ### Instructions for Module 5
+For testing this module independently:
+
 
  
 
@@ -243,13 +257,50 @@ Testing the LEDs are functioning correctly can be done easily. The user needs to
 
 <!-- Module 8 info -->
 ## Module 8 - LCD Display
-
+This module takes the calculated quantity of items left on the shelf from the Box Detection module, and shows a message on the LCD display depending on the item quantity. 
 
 
 ### About Module 8 Code
+Functions used in this module include: 
+  - COMWRT4(unsigned char):
+    - sets cursor position for writing message onto LCD display;
+  - DATWRT4(unsigned char): 
+    - writes a single character on LCD display;
+  - Init_LCD(void): 
+    - configures PORTK to output
+    - resets the display module
+    - sets data display format and display mode
+    - clears display
+    - sets home position and start position;
+  - writeStringLCD(unsigned char * message): 
+    - takes in a string, uses the COMWRT4 and DATWRT4 functions to print the string on LCD display;
+  - writeIntLCD(int number):
+    - takes in an integer and prints it on LCD display;
+  - stringIntStringLCD(unsigned char * message1, int number, unsigned char * message2): 
+    - prints a message with an integer in the middle (e.g. the refill reminder message “Refill x items” where x is an integer);
+  - activateDisplayLCD(unsigned int lcd_flag, int itemQty, int fullQty, char * fullMsg, char * emptyMsg, char * refMsg1, char * refMsg2, char * errorMsg): 
+    - Takes in the LCD_FLAG variable and checks its value  - if  LCD_FLAG = 1, LCD display module will be executed;
+    - Calls the message writing functions above (writeStringLCD, writeIntLCD, stringIntStringLCD) and prints appropriate messages depending on the item               quantity;
+    - When there is no item, prints “Shelf empty”;
+    - When item quantity is equal to full capacity, prints “Shelf full”;
+    - When item quantity is smaller than full capacity, calculates how many items need to be refilled, and prints “Refill x items”;
+    - When item quantity is more than full capacity, prints “Error”.
+  - MSDelay(unsigned int itime): 
+    - delays the program by a certain amount of time (in milliseconds).
+
 
 
 ### Instructions for Module 8
+For executing this module independently:
+User can access the main.c file and locate variables int LCD_FLAG, int qty and int full_qty;
+Set LCD_FLAG to 1 to allow the module to be executed;
+Set full_qty to any integer larger than 1;
+Set qty to an integer larger than full_qty and run the program, the board should display "Error";
+Set qty to 0 and run the program the board should dispay "Shelf Empty";
+Set qty to the same as full_qty and run the program, the board should display "Shelf full";
+Set qty to any positive integer smaller than full_qty and run the program, the board should display "Refill x items" where x is the difference between full_qty and qty. 
+
+Note: when running the program, the board may need to be reset to display the updated message. 
 
  
 
