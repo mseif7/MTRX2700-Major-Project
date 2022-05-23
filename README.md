@@ -112,7 +112,7 @@ The modules and member allocation are explained in the sections below.
 <!-- Module 2 info -->
 ## Module 2 - LiDAR Camera
 Module 2 is the module for measurement using the LiDAR camera.<br> This module takes the angle values in degree from the PTU module and a series of raw data measurement from the LiDAR stored in an array, then return a single number representing the distance to a single point.
-The returned value of this module is converted into vertical distance in centimeter from the device to the object by default, to meet the application occasion of this design.<br>If needed, users may pick the sub-modules to obtain straight-line distances or distance values in the same scale to the raw data.
+The returned value of this module is converted into vertical distance in centimeter from the device to the object by default, in order to meet the applying occasion of this design.<br>If needed, users may pick the sub-modules to obtain straight-line distances or distance values in the same scale to the raw data.
 It is assumed that the PTU has no motion when making measurement. Inaccurate results may occur otherwise. 
 
 
