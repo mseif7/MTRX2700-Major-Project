@@ -129,7 +129,34 @@ It is assumed that the PTU has no motion when making measurement. Inaccurate res
 
 
 ### About Module 2 Code
+####Data Obtaining
+The driver file “laser.c” initialize the LiDAR sensor and then continuously getting measurements. These values are discarded unless the PTU is confirmed to be at the desired position.<br>The detail operation refers to the PTU module. When The PTU reaches the target position, it starts taking the measured data from LiDAR sensor and write it to a global variable “LaserRD” (stands for “Laser Raw Data”), which is an array of integers. Then it calls the data processing functions to handle the raw data.
+The angles of the servo motors are also passed to the data processing part. 
+####Data Processing
+The data processing part contains a major function “distance_convert” that calls the other functions to complete its task.
+#####distance_convert
+Input: two angle values in degree<br>
+(The global variable “LaserRD” will be taken automatically, no needed to be included in the input parameters.)<br>
+Output: a float number representing the vertical distance from the object to the sensor<br>
+It calls the function “laser_noise_removal”, “unit_to_cm”, “angle_convert” in a series to process the data.
+#####laser_noise_removal
 
+#####unit_to_cm
+Input: an integer value of the measured distance in the same scale to the raw data (from “laser_noise_removal”)<br>
+Output: a float number of the measured distance in centimeters<br>
+This function simply divide the input with 281.7, which is the ratio from raw data to centimeter.
+#####angle_convert
+Input: two float numbers of the servo motor angles, one float number from “unit_to_cm” <br>
+Output: a float number representing the vertical distance from the object to the sensor<br>
+
+### Instructions for Module 2
+####Getting Measurement
+This module is designed on the assumption that the PTU has no motion during data acquisition. Inaccurate results may occur otherwise.<br>
+Depending on the rate of data acquisition, it is commended that the the sensor stays in the same position for long enough time to allow enough measured values to fill the data recording buffer. In this project, the recommended time is 0.5s to fill a buffer of size 40. Even if the buffer is not fully filled, the function may still run, but the result could be less accurate.
+####Distance Unit Conversion
+The ratio converting raw data to centimeter is obtained from field testing of the device used in this project and adapted to the method of ruling out noises. If a different device used, please refer to the manual of the new device or conduct another field test to obtain the new value. If a new method of noise removal is used, please recalculate this value. 
+####Vertical Distance Conversion
+The “angle_convert” function may be modified depends on the actual position and angle of the device connected to the frame, and the configuration of the servo motors.
 
 
 ### Instructions for Module 2
