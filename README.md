@@ -204,8 +204,8 @@ Functions used in this module include:
 For testing this module independently:
 
 User can access the main.c file and locate variables int SEG_FLAG and int qty;
-Set SEG_FLAG to 1 to allow the module to be executed;
-Set qty to any integer between 0 and 99 and run the program, and the value of qty should be displayed on the rightmost 2 digits of the 7-seg display area.
+- Set SEG_FLAG to 1 to allow the module to be executed;
+- Set qty to any integer between 0 and 99 and run the program, and the value of qty should be displayed on the rightmost 2 digits of the 7-seg display area.
 
 Note: when running the program, the board may need to be reset to display the updated value. 
 
@@ -306,12 +306,12 @@ Functions used in this module include:
 For executing this module independently:
 
 User can access the main.c file and locate variables int LCD_FLAG, int qty and int full_qty;
-Set LCD_FLAG to 1 to allow the module to be executed;
-Set full_qty to any integer larger than 1;
-Set qty to an integer larger than full_qty and run the program, the board should display "Error";
-Set qty to 0 and run the program the board should dispay "Shelf Empty";
-Set qty to the same as full_qty and run the program, the board should display "Shelf full";
-Set qty to any positive integer smaller than full_qty and run the program, the board should display "Refill x items" where x is the difference between full_qty and qty. 
+- Set LCD_FLAG to 1 to allow the module to be executed;
+- Set full_qty to any integer larger than 1;
+- Set qty to an integer larger than full_qty and run the program, the board should display "Error";
+- Set qty to 0 and run the program the board should dispay "Shelf Empty";
+- Set qty to the same as full_qty and run the program, the board should display "Shelf full";
+- Set qty to any positive integer smaller than full_qty and run the program, the board should display "Refill x items" where x is the difference between full_qty and qty. 
 
 Note: when running the program, the board may need to be reset to display the updated message. 
 
