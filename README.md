@@ -53,7 +53,8 @@
       </ul>
     </li>
     <li>
-      <a href="#module-6---sound">Module 6</a>
+    <li>
+      <a href="#module-6---led-lights">Module 7</a>
       <ul>
         <li>About Module 6 Code</a></li>
         <li>Instructions for Module 6</a></li>
@@ -61,19 +62,11 @@
       </ul>
     </li>
     <li>
-      <a href="#module-7---led-lights">Module 7</a>
+      <a href="#module-7---lcd-display">Module 8</a>
       <ul>
         <li>About Module 7 Code</a></li>
         <li>Instructions for Module 7</a></li>
         <li>Details about Testing Procedures for Module 7</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#module-8---lcd-display">Module 8</a>
-      <ul>
-        <li>About Module 8 Code</a></li>
-        <li>Instructions for Module 8</a></li>
-        <li>Details about Testing Procedures for Module 8</a></li>
       </ul>
     </li>
     <li><a href="#references">References</a></li>
