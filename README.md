@@ -134,7 +134,57 @@ It is assumed that the PTU has no motion when making measurement. Inaccurate res
 
 
 ### About Module 2 Code
+#### Data Obtaining
+The driver file “laser.c” initialize the LiDAR sensor and then continuously getting measurements. These values are discarded unless the PTU is confirmed to be at the desired position.<br>The detail operation refers to the PTU module. When The PTU reaches the target position, it starts taking the measured data from LiDAR sensor and write it to a global variable “LaserRD” (stands for “Laser Raw Data”), which is an array of integers. Then it calls the data processing functions to handle the raw data.
+The angles of the servo motors are also passed to the data processing part. 
 
+#### Data Processing
+The data processing part contains a major function “distance_convert” that calls the other functions to complete its task.
+
+##### float distance_convert(float, float)
+Input: two angle values in degree<br>
+(The global variable “LaserRD” will be taken automatically, no needed to be included in the input parameters.)<br>
+Output: a float number representing the vertical distance from the object to the sensor<br>
+Call this function when the measured data from the LiDAR camera is successfully stored in the “LaserRD” buffer.<br>
+It calls the function “laser_noise_removal”, “unit_to_cm”, “angle_convert” in a series to process the data.
+
+##### int laser_noise_removal(void)
+Input: no input<br>
+Output: an integer value of distance<br>
+This function reaches to the “LaserRD” buffer, rule out the data which could possibly be noise, and then calculate the average based on the data left.<br>
+Steps:
+0)Find the actual valid range of the buffer, as it may not be fully filled (some zeros left at the end)<br>
+Then for the non-zero values:<br>
+1)Sort the raw data ascending, remove the biggest and smallest 10% which are very likely to be noise.<br>
+2)For the data left, calculate average.<br>
+3)Get minimum and maximum, divide the range equally into 3.<br>
+For example, min=10, max=100, then get 3 ranges: 10 to 40, 40 to 70, 70 to 100.<br>
+4)Take only the data within the range that the average in.<br>
+For example, if average=50, only take the data from 40 to 70.<br>
+5)Again calculate the average (if no need to repeat, this would be the output)<br>
+<br>
+Repeat from step 3 to 5, until at least one of the following condition:<br>
+1)Max-min<1500, useful for distance below 15cm<br>
+2)Max/min<1.5, useful for larger distance<br>
+3)Less than 30% data left<br>
+
+
+##### void sort_l(int,int)
+Input: no input<br>
+Output: no output<br>
+A quicksort function for laser sensor readings, modified from a typical quicksort function copied from internet. It sorts the given range of the buffer in ascending order.
+
+##### float unit_to_cm(int)
+Input: an integer value of the measured distance in the same scale to the raw data (from “laser_noise_removal”)<br>
+Output: a float number of the measured distance in centimeters<br>
+This function simply divide the input with 281.7, which is the ratio from raw data to centimeter.
+
+##### float angle_convert(float,float,float)
+Input: two float numbers of the servo motor angles, one float number from “unit_to_cm” <br>
+Output: a float number representing the vertical distance from the object to the sensor<br>
+
+##### void clear_laser_buffer(void)
+Clear the laser data buffer. Setting it all zeros.
 
 
 ### Instructions for Module 2
