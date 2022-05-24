@@ -187,11 +187,6 @@ Output: a float number representing the vertical distance from the object to the
 Clear the laser data buffer. Setting it all zeros.
 
 
-### Instructions for Module 2
-
-   
-### Details about Testing Procedures for Module 2
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Module 3 info -->
