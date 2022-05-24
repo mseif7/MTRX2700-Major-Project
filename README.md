@@ -224,18 +224,16 @@ During testing of this module, to determine the corresponding angles from the du
 
 <!-- Module 4 info -->
 ## Module 4 - Box Detection
-
-
+Module 4 is the module for measurement about the quantity of boxes on shelf.
 
 ### About Module 4 Code
-
+For module 4, it just simply adds a compare function to module 2.
 
 ### Instructions for Module 4
-
+Compare the set range with the vertical distance from module 2.
  
-
 ### Details about Testing Procedures for Module 4
-
+The number of the variable box_quantity can be seen from the debugger.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -276,33 +274,14 @@ Testing of this module was done manually through channging the variables SEG_FLA
 This module has been able to successfully display any integer value of variable qty, between 0 and 99 (as only 2 dispay digits are used).
 
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Module 6 info -->
-## Module 6 - Sound
-
+## Module 6 - LED Lights
+Module 6 is responsible for the function of the LED's of the DragonBoard. This module will take in the remaining number of stock and depending on the amount remaining, the LED lights will act as a ‘progress bar’ and display the percentage of stock remaining as a ‘progress bar’.
 
 
 ### About Module 6 Code
-
-
-### Instructions for Module 6
-
- 
-
-### Details about Testing Procedures for Module 6
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- Module 7 info -->
-## Module 7 - LED Lights
-Module 7 is responsible for the function of the LED's of the DragonBoard. This module will take in the remaining number of stock and depending on the amount remaining, the LED lights will act as a ‘progress bar’ and display the percentage of stock remaining as a ‘progress bar’.
-
-
-### About Module 7 Code
 The required inputs for the module are the maximum number of boxes, and the remaining number of boxes. From these variables, another variable is calculated named ratio, which as the name suggests is a ratio of the remaining boxes with the total. The program then goes through a series of if statements to determine which range the value ratio lies between. The if statements are set up in order to 'round' ratio to the nearest eigth, to provide the most accurate progress bar.
 Once the range is found, another variable led_num is given a specific value. This value will later determine the number of LEDs which are illuminated. 
 
@@ -310,7 +289,7 @@ The values of PORTB and PORTJ are then set. DDRB = 0xFF and DDRJ = 0xFF sets bot
 
 
 
-### Instructions for Module 7
+### Instructions for Module 6
 For testing module individually:
 1. Manually declare the maximum amount of boxes and remaining number of boxes. This can be done at the top of main (eg for maximum boxes to be 80, write int max_boxes = 80;).
 2. Connect the device to the dragonboard
@@ -321,18 +300,18 @@ For testing module individually:
 
 
 
-### Details about Testing Procedures for Module 7
+### Details about Testing Procedures for Module 6
 Testing the LEDs are functioning correctly can be done easily. The user needs to change the values of max boxes and remaining boxes and observe if the correct amount of LEDs are illuminating. For example, make max_boxes = 80 and rem_boxes = 40. It can be seen that 50% of the boxes are remaining. Therefore we should obviously expected half (4/8) LEDs to be illuminated. If this is the case, the module is working correctly.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- Module 8 info -->
-## Module 8 - LCD Display
+<!-- Module 7 info -->
+## Module 7 - LCD Display
 This module takes the calculated quantity of items left on the shelf from the Box Detection module, and shows a message on the LCD display depending on the item quantity. 
 
 
-### About Module 8 Code
+### About Module 7 Code
 Functions used in this module include: 
   - COMWRT4(unsigned char):
     - sets cursor position for writing message onto LCD display;
@@ -362,7 +341,7 @@ Functions used in this module include:
 
 
 
-### Instructions for Module 8
+### Instructions for Module 7
 For executing this module independently:
 
 User can access the main.c file and locate variables int LCD_FLAG, int qty and int full_qty;
@@ -377,7 +356,7 @@ Note: when running the program, the board may need to be reset to display the up
 
  
 
-### Details about Testing Procedures for Module 8
+### Details about Testing Procedures for Module 7
 Testing of this module was done manually through channging the variables LCD_FLAG, full_qty and qty;
 Each possible case was tested and the module is able to display approriate messages for each case, including when qty = 0 (empty), qty = full_qty (full), qty > full_qty (error) and 0 < qty < full_qty (Refill x items).
 Some minor improvements were made throughout testing, such as modifying the writeIntLCD function so that the item quantity is displayed as integers and not decimals (e.g. board displays "Refill 9 items" instead of "Refill 9.0 items").
