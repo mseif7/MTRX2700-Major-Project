@@ -186,6 +186,26 @@ Output: a float number representing the vertical distance from the object to the
 ##### void clear_laser_buffer(void)
 Clear the laser data buffer. Setting it all zeros.
 
+### Instructions for Module 2
+#### Writing to the Buffer
+The valid size of the buffer to hold the measured data is defined by “LaserBufferSize” in the header. It is set to be 40 in this case but could be varied.<br>To be noticed, when allocating memory to it, the actual size of the buffer is LaserBufferSize+1. The last element of the buffer is 0, indicating the end of it. When writing data into it, the last element is supposed not to be used.
+ 
+#### Getting Measurement
+This module is designed on the assumption that the PTU has no motion during data acquisition. Inaccurate results may occur otherwise.<br>
+Depending on the rate of data acquisition, it is commended that the the sensor stays in the same position for long enough time to allow enough measured values to fill the data recording buffer. In this project, the recommended time is 0.5s to fill a buffer of size 40. Even if the buffer is not fully filled, the function may still run, but the result could be less accurate.<br>
+The method used in this function achieves a relatively accurate result with less calculation. It has been applied on data from 0 to 50 cm with a step of 5cm, measured for 10s at each position. It significantly improve the accuracy below 15cm  and gets a linear fitting of R square of 0.9914, which is very close to 1, indicating a good fit. 
+
+#### Distance Unit Conversion
+The ratio converting raw data to centimeter is obtained from field testing of the device used in this project and adapted to the method of ruling out noises. If a different device used, please refer to the manual of the new device or conduct another field test to obtain the new value. If a new method of noise removal is used, please recalculate this value. 
+
+#### Vertical Distance Conversion
+The “angle_convert” function may be modified depends on the actual position and angle of the device connected to the frame, and the configuration of the servo motors.
+   
+### Details about Testing Procedures for Module 2
+Testing of this module could be done manually.<br> 
+The angle conversion and unit conversion could be easily tested by apply test values. <br>
+Since the angle conversion is simple geometry and the unit conversion is just division, for some input test values, it can be manually checked with a calculator if the outputs make sense.<br>
+To test the noise removal module, we will need to manually assign values to the LiDAR data recording buffer.<br> These values are recommend to be taken from a LiDAR sensor field test where the distance is already known. <br> Compare the  output distance value (if needed, convert it into the unit you like) to the known distance recorded in field test, repeat doing this and check if the uncertainty is within an acceptable range. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
