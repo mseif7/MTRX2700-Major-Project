@@ -196,18 +196,28 @@ Clear the laser data buffer. Setting it all zeros.
 
 <!-- Module 3 info -->
 ## Module 3 - Pan and Tilt
-This module implements the use of the servos on the PTU. It uses duty cycles to rotate at a corresponding angle 
+This module implements the use of the servos on the PTU. It uses duty cycles to rotate at a corresponding angle and focuses on one box at a time, being able to take in a series of angles and translate these into the right duty cycle, such that it is able to detect the distance of a certain location. 
 
 
 ### About Module 3 Code
+This function comprises of 4 functions and 1 interrupt to trigger the movement of the servo. The four functions used are: 
+- PWMinitialise
+- setServoPose
+- Init_TC6
+- GetLatestServoPosition
 
+These functions combined will provide the location of the servo, where to set the servo, initialising the timer for the servo and initialising the PWM itself.
 
 ### Instructions for Module 3
-
+To run this file, all you need to do is:
+1. change the MAX_ROWS to however many rows there are on the shelf
+2. change the MAX_COLS to however many cols there are on the shelf
+3. if the width of the shelf is different, change the MAX_TIME
+4. run the file
  
 
 ### Details about Testing Procedures for Module 3
-
+During testing of this module, to determine the corresponding angles from the duty cycles, the servos were set to specific duty cycles to test the maximum and minimum angle. From there, a rough angle map of all the duty cycles was drawn up for both the azimuth and elevation servos. Once these angles were determined, the PTU was attached to a prototype for testing of the actual angles and where they corresponded to the right squares on the prototype. If the angles and tilts were incorrect, minor adjustments were made to the duty cycles to correct the angles.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -251,7 +261,7 @@ Functions used in this module include:
 
 
 ### Instructions for Module 5
-For executing this module independently:
+For testing this module independently:
 
 User can access the main.c file and locate variables int SEG_FLAG and int qty;
 - Set SEG_FLAG to 1 to allow the module to be executed;
@@ -262,7 +272,7 @@ Note: when running the program, the board may need to be reset to display the up
  
 
 ### Details about Testing Procedures for Module 5
-Testing of this module was done manually through channging the variables SEG_FLAG and qty (as described in the instructions section above);
+Testing of this module was done manually through channging the variables SEG_FLAG and qty;
 This module has been able to successfully display any integer value of variable qty, between 0 and 99 (as only 2 dispay digits are used).
 
 
