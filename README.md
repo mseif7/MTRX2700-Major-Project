@@ -146,7 +146,7 @@ It is assumed that the PTU has no motion when making measurement. Inaccurate res
 
 <!-- Module 3 info -->
 ## Module 3 - Pan and Tilt
-
+This module implements the use of the servos on the PTU. It uses duty cycles to rotate at a corresponding angle 
 
 
 ### About Module 3 Code
