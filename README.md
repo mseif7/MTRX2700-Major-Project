@@ -53,7 +53,6 @@
       </ul>
     </li>
     <li>
-    <li>
       <a href="#module-6---led-lights">Module 7</a>
       <ul>
         <li>About Module 6 Code</a></li>
