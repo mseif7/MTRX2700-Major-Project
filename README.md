@@ -251,7 +251,7 @@ Functions used in this module include:
 
 
 ### Instructions for Module 5
-For testing this module independently:
+For executing this module independently:
 
 User can access the main.c file and locate variables int SEG_FLAG and int qty;
 - Set SEG_FLAG to 1 to allow the module to be executed;
@@ -262,7 +262,7 @@ Note: when running the program, the board may need to be reset to display the up
  
 
 ### Details about Testing Procedures for Module 5
-Testing of this module was done manually through channging the variables SEG_FLAG and qty;
+Testing of this module was done manually through channging the variables SEG_FLAG and qty (as described in the instructions section above);
 This module has been able to successfully display any integer value of variable qty, between 0 and 99 (as only 2 dispay digits are used).
 
 
